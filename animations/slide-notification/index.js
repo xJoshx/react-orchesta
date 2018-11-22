@@ -1,22 +1,22 @@
 import { Animated } from "react-native";
 
-const TENSION = 120;
-const FRICTION = 60;
+const TENSION = 40;
+const FRICTION = 6;
 
 const slideValue = new Animated.Value(0);
-const notificationPosition = slideValue.interpolate({
-  inputRange: [0, 0.25, 0.5, 1],
-  outputRange: [-100, -50, 0, 50]
-});
+// const notificationPosition = slideValue.interpolate({
+//   inputRange: [0, 0.25, 0.5, 1],
+//   outputRange: [-100, -50, 0, 50]
+// });
 
 export const slideNotificationAnimation = {
-  transform: [{ translateY: notificationPosition }]
+  transform: [{ translateY: slideValue }]
 };
 
 export const triggerShowAnimation = () => {
   slideValue.setValue(0);
   Animated.spring(slideValue, {
-    toValue: 1,
+    toValue: -100,
     tension: TENSION,
     friction: FRICTION,
     useNativeDriver: true
@@ -24,7 +24,7 @@ export const triggerShowAnimation = () => {
 };
 
 export const triggerHideAnimation = () => {
-  slideValue.setValue(1);
+  slideValue.setValue(-100);
   Animated.spring(slideValue, {
     toValue: 0,
     tension: TENSION,
