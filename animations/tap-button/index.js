@@ -13,7 +13,7 @@ export const tapButtonAnimation = {
   transform: [{ scale: buttonScale }]
 };
 export const triggerTapButtonAnimation = () => {
-  scaleValue.setValue(0.5);
+  scaleValue.setValue(0);
   Animated.spring(scaleValue, {
     toValue: 1,
     tension: TENSION,
