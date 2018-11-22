@@ -9,9 +9,6 @@ import {
 import styled from "styled-components";
 import { white } from "../utils/colors";
 
-const TOGGLED = "TOGGLED";
-const HIDDEN = "HIDDEN";
-
 const AppContainer = styled(View)`
   display: flex;
   flex: 1;
@@ -29,19 +26,10 @@ function Content({ children, center = false }) {
 
 class App extends React.Component {
   state = {
-    status: HIDDEN,
     data: [
       { key: "Slide notification", path: "SlideNotification" },
       { key: "Tap button", path: "TapButton" }
     ]
-  };
-
-  showAnimation = () => {
-    this.setState({ status: TOGGLED }, triggerShowAnimation);
-  };
-
-  hideAnimation = () => {
-    this.setState({ status: HIDDEN }, triggerHideAnimation);
   };
 
   render() {
