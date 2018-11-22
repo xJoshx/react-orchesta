@@ -26,27 +26,34 @@ function Content({ children, center = false }) {
 
 class App extends React.Component {
   state = {
+    activeItem: null,
+    // activeItem: { key: "Slide up card view", path: "SlideUpCard" },
     data: [
       { key: "Slide notification", path: "SlideNotification" },
-      { key: "Tap button", path: "TapButton" }
+      { key: "Tap button", path: "TapButton" },
+      { key: "Slide up card view", path: "SlideUpCard" }
     ]
   };
 
   render() {
     return (
       <Content center>
-        <FlatList
-          data={this.state.data}
-          renderItem={({ item }) => (
-            <TouchableHighlight
-              activeOpacity={0.5}
-              underlayColor={white}
-              onPress={() => this.props.navigation.push(item.path)}
-            >
-              <Text style={styles.item}>{item.key}</Text>
-            </TouchableHighlight>
-          )}
-        />
+        {this.state.activeItem ? (
+          this.props.navigation.push(this.state.activeItem.path)
+        ) : (
+          <FlatList
+            data={this.state.data}
+            renderItem={({ item }) => (
+              <TouchableHighlight
+                activeOpacity={0.5}
+                underlayColor={white}
+                onPress={() => this.props.navigation.push(item.path)}
+              >
+                <Text style={styles.item}>{item.key}</Text>
+              </TouchableHighlight>
+            )}
+          />
+        )}
       </Content>
     );
   }

@@ -3,6 +3,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import App from "../screens/Main";
 import SlideNotification from "../screens/SlideNotification";
 import TapButton from "../screens/TapButton";
+import SlideUpCard from "../screens/SlideUpCard";
 
 const AppNavigator = createStackNavigator({
   Main: {
@@ -25,6 +26,13 @@ const AppNavigator = createStackNavigator({
     navigationOptions: ({ navigation }) => ({
       // title: `${navigation.state.params.title}`
       title: "Tap button"
+    })
+  },
+  SlideUpCard: {
+    screen: SlideUpCard,
+    path: "animations/slide-up-card",
+    navigationOptions: ({ navigation }) => ({
+      title: "Slide up card"
     })
   }
 });
