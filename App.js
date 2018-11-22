@@ -1,9 +1,15 @@
 import React from "react";
-import { View, Animated, TouchableWithoutFeedback } from "react-native";
+import { View, TouchableWithoutFeedback } from "react-native";
 import styled from "styled-components";
 
+import { IOSNotification } from "./components/Notification";
+import AnimatedComponent from "./components/AnimatedComponent";
+import {
+  slideNotificationAnimation,
+  triggerShowAnimation,
+  triggerHideAnimation
+} from "./animations/slide-notification";
 import { IOSButton } from "./components/Button";
-import { animationStyle, animation } from "./animations/tap-button";
 
 const TOGGLED = "TOGGLED";
 const HIDDEN = "HIDDEN";
@@ -11,8 +17,9 @@ const HIDDEN = "HIDDEN";
 const AppContainer = styled(View)`
   display: flex;
   flex: 1;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: ${props => (props.center ? "center" : "flex-start")}; */
+  justify-content: space-around;
+  align-items: ${props => (props.center ? "center" : "flex-start")};
   padding: 30px;
   padding: 20px 10px;
   background: white;
@@ -20,22 +27,36 @@ const AppContainer = styled(View)`
 `;
 
 function Content({ children, center = false }) {
-  return <AppContainer>{children}</AppContainer>;
+  return <AppContainer center={center}>{children}</AppContainer>;
 }
 
 class App extends React.Component {
   state = {
-    status: TOGGLED
+    status: HIDDEN
+  };
+
+  showAnimation = () => {
+    this.setState({ status: TOGGLED }, triggerShowAnimation);
+  };
+
+  hideAnimation = () => {
+    this.setState({ status: HIDDEN }, triggerHideAnimation);
   };
 
   render() {
     return (
       <Content center>
-        <TouchableWithoutFeedback>
-          <Animated.View style={animationStyle}>
-            <IOSButton onPress={animation} />
-          </Animated.View>
-        </TouchableWithoutFeedback>
+        <AnimatedComponent animation={slideNotificationAnimation}>
+          <IOSNotification />
+        </AnimatedComponent>
+        <IOSButton
+          title="Toggle notification"
+          onPress={
+            this.state.status === HIDDEN
+              ? this.showAnimation
+              : this.hideAnimation
+          }
+        />
       </Content>
     );
   }
