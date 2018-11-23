@@ -26,12 +26,13 @@ function Content({ children, center = false }) {
 
 class App extends React.Component {
   state = {
-    activeItem: null,
-    // activeItem: { key: "Slide up card view", path: "SlideUpCard" },
+    // activeItem: null,
+    activeItem: { key: "Expand list item", path: "ExpandListItem" },
     data: [
       { key: "Slide notification", path: "SlideNotification" },
       { key: "Tap button", path: "TapButton" },
-      { key: "Slide up card view", path: "SlideUpCard" }
+      { key: "Slide up card view", path: "SlideUpCard" },
+      { key: "Expand list item", path: "ExpandListItem" }
     ]
   };
 

@@ -1,9 +1,9 @@
-import React from "react";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import App from "../screens/Main";
 import SlideNotification from "../screens/SlideNotification";
 import TapButton from "../screens/TapButton";
 import SlideUpCard from "../screens/SlideUpCard";
+import ExpandListItem from "../screens/ExpandListItem";
 
 const AppNavigator = createStackNavigator({
   Main: {
@@ -33,6 +33,13 @@ const AppNavigator = createStackNavigator({
     path: "animations/slide-up-card",
     navigationOptions: ({ navigation }) => ({
       title: "Slide up card"
+    })
+  },
+  ExpandListItem: {
+    screen: ExpandListItem,
+    path: "animations/expand-list-item",
+    navigationOptions: ({ navigation }) => ({
+      title: "Expand list item"
     })
   }
 });
