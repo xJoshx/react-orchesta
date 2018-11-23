@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text, TouchableWithoutFeedback } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 import { mockText } from "../mock";
 
-const Notification = styled(View)`
+const Notification = styled(TouchableOpacity)`
   padding: 12px 8px;
   border-radius: 12px;
   min-height: 80px;
@@ -11,7 +11,7 @@ const Notification = styled(View)`
   position: relative;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.8);
+  background: #fafafa;
 `;
 
 const notificationShadow = {
@@ -46,11 +46,14 @@ export const IOSNotification = ({
   onPressOut
 }) => {
   return (
-    <TouchableWithoutFeedback onPress={onPress} onPressOut={onPressOut}>
-      <Notification style={notificationShadow}>
-        <Title>{title}</Title>
-        <Body>{body}</Body>
-      </Notification>
-    </TouchableWithoutFeedback>
+    <Notification
+      activeOpacity={1}
+      onPress={onPress}
+      onPressOut={onPressOut}
+      style={notificationShadow}
+    >
+      <Title>{title}</Title>
+      <Body>{body}</Body>
+    </Notification>
   );
 };

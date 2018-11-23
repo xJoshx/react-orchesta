@@ -26,8 +26,8 @@ function Content({ children, center = false }) {
 
 class App extends React.Component {
   state = {
-    // activeItem: null,
-    activeItem: { key: "Expand list item", path: "ExpandListItem" },
+    activeItem: null,
+    // activeItem: { key: "Expand list item", path: "ExpandListItem" },
     data: [
       { key: "Slide notification", path: "SlideNotification" },
       { key: "Tap button", path: "TapButton" },
