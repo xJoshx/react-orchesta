@@ -4,6 +4,7 @@ import SlideNotification from "../screens/SlideNotification";
 import TapButton from "../screens/TapButton";
 import SlideUpCard from "../screens/SlideUpCard";
 import ExpandListItem from "../screens/ExpandListItem";
+import ExpandListItemImproved from "../screens/ExpandListItemImproved";
 
 const AppNavigator = createStackNavigator({
   Main: {
@@ -40,6 +41,13 @@ const AppNavigator = createStackNavigator({
     path: "animations/expand-list-item",
     navigationOptions: ({ navigation }) => ({
       title: "Expand list item"
+    })
+  },
+  ExpandListItemImproved: {
+    screen: ExpandListItemImproved,
+    path: "animations/expand-list-item-improved",
+    navigationOptions: ({ navigation }) => ({
+      title: "Expand list item improved"
     })
   }
 });
