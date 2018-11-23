@@ -9,11 +9,13 @@ import {
 import styled from "styled-components";
 import { mockText } from "../mock";
 import { iOSUIKit } from "react-native-typography";
+import Animated from "react-native-reanimated";
+import AnimatedComponent from "./AnimatedComponent";
+import { roundBordersAnimation } from "../animations/expand-list-item-big";
 const { height } = Dimensions.get("window");
 
 const ListItemBig = styled(ImageBackground)`
   padding: 20px 12px;
-  border-radius: 16px;
   height: ${height * 0.5}px;
   position: relative;
   display: flex;
@@ -53,20 +55,27 @@ export const IOSListItemBig = ({
   return (
     <TouchableWithoutFeedback onPress={onPress} onPressOut={onPressOut}>
       <ListItemBigWrapper style={listItemBigShadow}>
-        <ListItemBig source={require("../assets/listItemBackground2.jpg")}>
-          <TitleWrapper>
-            <Subtitle
-              style={{
-                ...iOSUIKit.subheadEmphasizedWhiteObject,
-                textTransform: "uppercase"
-              }}
-            >
-              {subtitle}
-            </Subtitle>
-            <Title style={iOSUIKit.largeTitleEmphasizedWhite}>{title}</Title>
-          </TitleWrapper>
-          <Footnote style={iOSUIKit.calloutWhite}>{footnote}</Footnote>
-        </ListItemBig>
+        <AnimatedComponent
+          animation={[
+            { borderRadius: 16, overflow: "hidden" },
+            roundBordersAnimation
+          ]}
+        >
+          <ListItemBig source={require("../assets/listItemBackground2.jpg")}>
+            <TitleWrapper>
+              <Subtitle
+                style={{
+                  ...iOSUIKit.subheadEmphasizedWhiteObject,
+                  textTransform: "uppercase"
+                }}
+              >
+                {subtitle}
+              </Subtitle>
+              <Title style={iOSUIKit.largeTitleEmphasizedWhite}>{title}</Title>
+            </TitleWrapper>
+            <Footnote style={iOSUIKit.calloutWhite}>{footnote}</Footnote>
+          </ListItemBig>
+        </AnimatedComponent>
       </ListItemBigWrapper>
     </TouchableWithoutFeedback>
   );

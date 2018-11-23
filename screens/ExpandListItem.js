@@ -8,7 +8,7 @@ import {
   tapButtonAnimation,
   triggerShowAnimation,
   triggerHideAnimation
-} from "../animations/list-item-big-expand";
+} from "../animations/expand-list-item-big";
 
 const TOGGLED = "TOGGLED";
 const HIDDEN = "HIDDEN";

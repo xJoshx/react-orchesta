@@ -32,7 +32,7 @@ class App extends React.Component {
       { key: "Slide notification", path: "SlideNotification" },
       { key: "Tap button", path: "TapButton" },
       { key: "Slide up card view", path: "SlideUpCard" },
-      { key: "Expand list item", path: "ExpandListItem" }
+      { key: "Expand list item (WIP)", path: "ExpandListItem" }
     ]
   };
 
